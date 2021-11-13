@@ -12,7 +12,11 @@
                     <div class="card-body">
                         @if ($item)
                             <h1>{{ $item['title'] }}</h1>
-                            <p>{{ $item['text'] }}</p>
+                            @if ($item['is_private'])
+                                <p>Для просмотра новости требуется авторизация</p>
+                            @else
+                                <p>{{ $item['text'] }}</p>
+                            @endif
                         @else
                             <p>Новость не найдена</p>
                         @endif

@@ -35,6 +35,8 @@ Route::name('admin.')
         Route::get('/', [AdminController::class, 'index'])->name('index');
         Route::get('/test1', [AdminController::class, 'test1'])->name('test1');
         Route::get('/test2', [AdminController::class, 'test2'])->name('test2');
+        Route::get('/create', [AdminController::class, 'create'])->name('create');
+        Route::post('/create', [AdminController::class, 'create'])->name('create');
     });
 
 Auth::routes();

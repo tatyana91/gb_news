@@ -10,12 +10,17 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <h1>Категория {{ $category['title'] }}</h1>
-                        @forelse($news as $item)
-                            <a href="{{ route('news.one', $item['slug']) }}">{{ $item['title'] }}</a><br>
-                        @empty
-                            <p>Новостей данной категории ещё нет</p>
-                        @endforelse
+                        @if ($category)
+                            <h1>Категория {{ $category['title'] }}</h1>
+                            @forelse($news as $item)
+                                <a href="{{ route('news.one', $item['slug']) }}">{{ $item['title'] }}</a><br>
+                            @empty
+                                <p>Новостей данной категории ещё нет</p>
+                            @endforelse
+                        @else
+                            <p>Категория не найдена</p>
+                        @endif
+
                     </div>
                 </div>
             </div>

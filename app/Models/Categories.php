@@ -9,30 +9,30 @@ class Categories extends Model
 {
     use HasFactory;
 
-    private static $categories = [
-        [
+    private $categories = [
+        1 => [
             'id' => 1,
             'title' => 'Спорт',
             'slug' => 'sport'
         ],
-        [
+        2 => [
             'id' => 2,
             'title' => 'Политика',
             'slug' => 'politika'
         ],
-        [
+        3 => [
             'id' => 3,
             'title' => 'Культура',
             'slug' => 'kultura'
         ]
     ];
 
-    public static function getAll() {
-        return static::$categories;
+    public function getAll() {
+        return $this->categories;
     }
 
-    public static function getItemBySlug($slug) {
-        foreach (static::getAll() as $cat) {
+    public function getItemBySlug($slug) {
+        foreach ($this->getAll() as $cat) {
             if ($cat['slug'] == $slug) {
                 return $cat;
             }
@@ -40,7 +40,8 @@ class Categories extends Model
         return [];
     }
 
-    public static function getNews($id) {
-        return News::getNewsByCategory($id);
+    public function getNews(News $news, $slug) {
+        $category = $this->getItemBySlug($slug);
+        return ($category) ? $news->getNewsByCategory($category['id']) : [];
     }
 }

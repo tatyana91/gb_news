@@ -9,24 +9,24 @@ use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-    public function all(){
-        $news = News::getAll();
+    public function all(News $news){
+        $news = $news->getAll();
         return view('news.all')->with('news', $news);
     }
 
-    public function one($slug){
-        $news_item = News::getItemBySlug($slug);
+    public function one(News $news, $slug){
+        $news_item = $news->getItemBySlug($slug);
         return view('news.one')->with('item', $news_item);
     }
 
-    public function categories(){
-        $items = Categories::getAll();
+    public function categories(Categories $categories){
+        $items = $categories->getAll();
         return view('news.categories')->with('categories', $items);
     }
 
-    public function category($slug){
-        $category = Categories::getItemBySlug($slug);
-        $news = Categories::getNews($category['id']);
+    public function category(Categories $categories, News $news, $slug){
+        $category = $categories->getItemBySlug($slug);
+        $news = $categories->getNews($news, $slug);
         return view('news.category_news', [
                 'category' => $category,
                 'news' => $news

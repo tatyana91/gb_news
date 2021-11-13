@@ -1,0 +1,42 @@
+{
+    "1": {
+        "title": "Тест 1",
+        "category_id": "2",
+        "text": "тест 1",
+        "is_private": 0,
+        "id": 1,
+        "slug": "test-1"
+    },
+    "2": {
+        "title": "Тест 2",
+        "category_id": "3",
+        "text": "тест 2",
+        "is_private": 1,
+        "id": 2,
+        "slug": "test-2"
+    },
+    "3": {
+        "title": "Тест 3",
+        "category_id": "1",
+        "text": "тест 3",
+        "is_private": 1,
+        "id": 3,
+        "slug": "test-3"
+    },
+    "4": {
+        "title": "Тест 4",
+        "category_id": "1",
+        "text": "тест 4",
+        "is_private": 0,
+        "id": 4,
+        "slug": "test-4"
+    },
+    "5": {
+        "title": "Тест 5",
+        "category_id": "2",
+        "text": "тест 5",
+        "is_private": 0,
+        "id": 5,
+        "slug": "test-5"
+    }
+}

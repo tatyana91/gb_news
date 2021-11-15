@@ -12,7 +12,7 @@
                     <div class="card-body">
                         <h1>Категории</h1>
                         @forelse($categories as $item)
-                            <a href="{{ route('news.category', $item['slug']) }}">{{ $item['title'] }}</a><br>
+                            <a href="{{ route('news.category', $item->slug) }}">{{ $item->title }}</a><br>
                         @empty
                             <p>Категорий новостей пока что нет</p>
                         @endforelse

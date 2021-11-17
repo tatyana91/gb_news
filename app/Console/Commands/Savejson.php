@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Categories;
+use App\Models\Category;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 
@@ -37,9 +37,9 @@ class Savejson extends Command
      *
      * @return int
      */
-    public function handle(Categories $categories)
+    public function handle()
     {
-        File::put(storage_path() . '/categories.json', json_encode($categories->getAll(), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+        File::put(storage_path() . '/category.json', json_encode(Category::all(), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
         return Command::SUCCESS;
     }
 }

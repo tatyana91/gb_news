@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\IndexController as AdminIndexController;
+use App\Http\Controllers\Admin\NewsController as AdminNewsController;
+use App\Http\Controllers\Admin\CategoriesController as AdminCategoriesController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\News\NewsController;
 use Illuminate\Support\Facades\Route;
@@ -25,18 +27,18 @@ Route::name('news.')
     ->group(function () {
         Route::get('/', [NewsController::class, 'all'])->name('all');
         Route::get('/categories', [NewsController::class, 'categories'])->name('categories');
-        Route::get('/categories/{slug}', [NewsController::class, 'category'])->name('category');
+        Route::get('/category/{slug}', [NewsController::class, 'category'])->name('category');
         Route::get('/{slug}', [NewsController::class, 'one'])->name('one');
     });
 
 Route::name('admin.')
     ->prefix('admin')
     ->group(function () {
-        Route::get('/', [AdminController::class, 'index'])->name('index');
-        Route::get('/test1', [AdminController::class, 'test1'])->name('test1');
-        Route::get('/test2', [AdminController::class, 'test2'])->name('test2');
-        Route::get('/create', [AdminController::class, 'create'])->name('create');
-        Route::post('/create', [AdminController::class, 'create'])->name('create');
+        Route::get('/', [AdminIndexController::class, 'index'])->name('index');
+        Route::get('/test1', [AdminIndexController::class, 'test1'])->name('test1');
+        Route::get('/test2', [AdminIndexController::class, 'test2'])->name('test2');
+        Route::resource('/news', AdminNewsController::class);
+        Route::resource('/categories', AdminCategoriesController::class);
     });
 
 Auth::routes();

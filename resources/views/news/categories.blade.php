@@ -16,6 +16,8 @@
                         @empty
                             <p>Категорий новостей пока что нет</p>
                         @endforelse
+
+                        {{ $categories->links() }}
                     </div>
                 </div>
             </div>

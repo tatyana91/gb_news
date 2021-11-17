@@ -53,3 +53,18 @@ $response = tap($kernel->handle(
 ))->send();
 
 $kernel->terminate($request, $response);
+
+//php artisan make:command Savejson
+//php artisan save:json
+//php artisan storage:link
+//php artisan make:migration create_news_table --create=news
+//php artisan make:model News -m
+//php artisan migrate
+//php artisan migrate:rollback
+//php artisan make:seeder NewsSeeder
+//php artisan db:seed
+//php artisan db:seed --class=NewsSeeder
+//composer dump-autoload
+//php artisan cache:clear
+//php artisan route:clear
+//php artisan view:clear

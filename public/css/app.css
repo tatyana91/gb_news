@@ -10019,3 +10019,10 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.card-img {
+    height: 150px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\News\NewsController;
 use Illuminate\Support\Facades\Route;

@@ -11,9 +11,9 @@
                 <div class="card">
                     <div class="card-body">
                         @if ($category)
-                            <h1>Категория {{ $category['title'] }}</h1>
+                            <h1>Категория {{ $category->title }}</h1>
                             @forelse($news as $item)
-                                <a href="{{ route('news.one', $item['slug']) }}">{{ $item['title'] }}</a><br>
+                                <a href="{{ route('news.one', $item->slug) }}">{{ $item->title }}</a><br>
                             @empty
                                 <p>Новостей данной категории ещё нет</p>
                             @endforelse

@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h1>Добавление новости</h1>
-                        <form method="POST" action="{{ route('admin.create') }}">
+                        <form method="POST" action="{{ route('admin.create') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group row">
@@ -48,6 +48,10 @@
                                         {{ old('is_private') ? 'checked' : ''}}>
                                     <label for="is_private" class="col-form-label">приватная</label>
                                 </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="file" name="image">
                             </div>
 
                             <div class="form-group row mb-0">

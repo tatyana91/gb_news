@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\File;
 
 class Categories extends Model
 {
     use HasFactory;
 
-    private $categories = [
+    /*private $categories = [
         1 => [
             'id' => 1,
             'title' => 'Спорт',
@@ -25,10 +26,12 @@ class Categories extends Model
             'title' => 'Культура',
             'slug' => 'kultura'
         ]
-    ];
+    ];*/
 
     public function getAll() {
-        return $this->categories;
+        return (File::exists(storage_path() . '/categories.json'))
+            ? json_decode(File::get(storage_path() . '/categories.json'), true)
+            : [];
     }
 
     public function getItemBySlug($slug) {

@@ -17,10 +17,11 @@
                             @empty
                                 <p>Новостей данной категории ещё нет</p>
                             @endforelse
+
+                            {{ $news->links() }}
                         @else
                             <p>Категория не найдена</p>
                         @endif
-
                     </div>
                 </div>
             </div>

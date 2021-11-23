@@ -17,9 +17,16 @@
 
                             <div class="form-group row">
                                 <label for="title" class="col-md-12 col-form-label">Название</label>
-
                                 <div class="col-md-12">
-                                    <input id="title" type="text" class="form-control" name="title" value="{{ old('title') ?? $news->title }}" required autocomplete="title" autofocus>
+                                    @if ($errors->has('title'))
+                                        <div class="alert alert-danger" role="alert">
+                                            @foreach($errors->get('title') as $error)
+                                                {{ $error }}<br>
+                                            @endforeach
+                                        </div>
+                                    @endif
+                                    <input id="title" type="text" class="form-control" name="title"
+                                           value="{{ old('title') ?? $news->title }}" autocomplete="title" autofocus>
                                 </div>
                             </div>
 
@@ -29,7 +36,7 @@
                                 <div class="col-md-12">
                                     <select id="category_id" name="category_id" class="form-control">
                                        @foreach ($categories as $category)
-                                        <option value="{{ $category['id'] }}" @if ($category->id == old('category_id') ?? $category->id == $news->category_id) selected @endif>{{ $category['title'] }}</option>
+                                        <option value="{{ $category['id'] }}" @if ($category->id == old('category_id') || $category->id == $news->category_id) selected @endif>{{ $category['title'] }}</option>
                                         @endforeach
                                     </select>
                                 </div>

@@ -16,10 +16,17 @@
                             @if ($category->id) @method('PUT') @endif
 
                             <div class="form-group row">
-                                <label for="title" class="col-md-12 col-form-label">Название</label>
-
+                                <label for="title" class="col-md-12 col-form-label">Название категории</label>
                                 <div class="col-md-12">
-                                    <input id="title" type="text" class="form-control" name="title" value="{{ old('title') ?? $category->title }}" required autocomplete="title" autofocus>
+                                    @if ($errors->has('title'))
+                                        <div class="alert alert-danger" role="alert">
+                                            @foreach($errors->get('title') as $error)
+                                                {{ $error }}<br>
+                                            @endforeach
+                                        </div>
+                                    @endif
+                                    <input id="title" type="text" class="form-control" name="title"
+                                           value="{{ old('title') ?? $category->title }}" autocomplete="title" autofocus>
                                 </div>
                             </div>
 

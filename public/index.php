@@ -71,3 +71,10 @@ $kernel->terminate($request, $response);
 //php artisan config:cache
 //php artisan migrate:fresh --seed
 //composer require barryvdh/laravel-debugbar --dev
+//php artisan make:factory NewsFactory --model=News
+//php artisan make:request NewsRequest
+//php artisan make:rule Ember
+//composer require --dev laravel/dusk
+//php artisan dusk:install
+//php artisan dusk
+//php artisan dusk:make AddNewsTest

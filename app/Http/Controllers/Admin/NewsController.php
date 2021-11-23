@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\NewsRequest;
 use App\Models\Category;
 use App\Models\News;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class NewsController extends Controller
 {
     public function index(){
         return view('admin.news.index', [
-            'news' => News::query()->paginate(self::COUNT_PER_PAGE)
+            'news' => News::query()->paginate(config('app.count_per_page'))
         ]);
     }
 
@@ -24,24 +25,12 @@ class NewsController extends Controller
         ]);
     }
 
-    public function store(Request $request) {
-        $request->flash();
+    public function store(NewsRequest $request, News $news) {
+        $request->validated();
 
-        $image = null;
-        if ($request->file('image')) {
-            $path = Storage::putFile('public/images', $request->file('image'));
-            $image = Storage::url($path);
-        }
+        $result = $this->saveNews($request, $news);
 
-        $slug = Str::slug($request->title);
-
-        $news = new News();
-        $news->fill($request->all());
-        $news->image = $image;
-        $news->slug = $slug;
-        $news->save();
-
-        return redirect()->route('news.one', $slug)->with('success', 'Новость добавлена');
+        return redirect()->route('news.one', $result['slug'])->with('success', 'Новость добавлена');
     }
 
     public function edit(News $news) {
@@ -51,27 +40,33 @@ class NewsController extends Controller
         ]);
     }
 
-    public function update(Request $request, News $news) {
-        $request->flash();
+    public function update(NewsRequest $request, News $news) {
+        $request->validated();
 
-        $url = null;
-        if ($request->file('image')) {
-            $path = Storage::putFile('public/img', $request->file('image'));
-            $url = Storage::url($path);
-        }
-        $slug = Str::slug($request->title);
+        $result = $this->saveNews($request, $news);
 
-        $news->fill($request->all());
-        $news->slug = $slug;
-        $news->image = $url;
-        $news->save();
-
-
-        return redirect()->route('news.one', $news->slug)->with('success', 'Новость изменена');
+        return redirect()->route('news.one', $result['slug'])->with('success', 'Новость изменена');
     }
 
     public function destroy(News $news) {
         $news->delete();
         return redirect()->route('admin.news.index')->with('success', 'Новость удалена');
+    }
+
+    public function saveNews(NewsRequest $request, News $news){
+        $image = null;
+        if ($request->file('image')) {
+            $path = Storage::putFile('public/images', $request->file('image'));
+            $image = Storage::url($path);
+        }
+
+        $slug = Str::slug($request->title);
+
+        $news->fill($request->all());
+        $news->image = $image;
+        $news->slug = $slug;
+        $news->save();
+
+        return array('slug' => $slug);
     }
 }

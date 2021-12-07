@@ -21,7 +21,6 @@ class CreateNewsTable extends Migration
             $table->boolean('is_private')->default(false);
             $table->string('image')->nullable(true);
             $table->string('slug');
-            $table->bigInteger('category_id')->nullable(false)->default(1);
             //$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
         });

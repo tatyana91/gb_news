@@ -28,7 +28,7 @@ class NewsSeeder extends Seeder
             $data[] = [
                 'title' => $title,
                 'text' => $faker->realText(rand(200,700)),
-                'is_private' => false,
+                'is_private' => rand(0, 1),
                 'image' => null,
                 'slug' => Str::slug($title),
                 'category_id' => $categories[array_rand($categories)]

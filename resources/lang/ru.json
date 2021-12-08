@@ -197,8 +197,8 @@
     "El Salvador": "Сальвадор",
     "Email": "E-Mail адрес",
     "Email Address": "Email",
-    "E-Mail Address": "Email",
     "Email Addresses": "Email",
+    "E-Mail Address": "Email",
     "Email Password Reset Link": "Ссылка для сброса пароля",
     "Enable": "Включить",
     "Ensure your account is using a long, random password to stay secure.": "В целях безопасности убедитесь, что Вы используете длинный рандомный пароль.",
@@ -371,6 +371,7 @@
     "New :resource": "Новый :resource",
     "New Caledonia": "Новая Каледония",
     "New Password": "Новый пароль",
+    "New Password Confirmation": "Подтвердите пароль",
     "New Zealand": "Новая Зеландия",
     "Next": "Следующий",
     "Nicaragua": "Никарагуа",
@@ -710,5 +711,9 @@
     "Zambia": "Замбия",
     "Zimbabwe": "Зимбабве",
     "Zip \/ Postal Code": "Индекс",
-    "Åland Islands": "Аландские острова"
+    "Åland Islands": "Аландские острова",
+    "Users": "Пользователи",
+    "Admin panel": "Админка",
+    "Categories": "Категории",
+    "News": "Новости"
 }

@@ -17,7 +17,8 @@ class AlterTableNewsAddCategory extends Migration
             $table->unsignedBigInteger('category_id')->default(1);
             $table->foreign('category_id')
                 ->references('id')
-                ->on('categories');
+                ->on('categories')
+                ->onDelete('cascade');
         });
     }
 
@@ -29,7 +30,7 @@ class AlterTableNewsAddCategory extends Migration
     public function down()
     {
         Schema::table('news', function (Blueprint $table) {
-            $table->dropForeign('category_id');
+            $table->dropForeign(['category_id']);
             $table->dropColumn('category_id');
         });
     }

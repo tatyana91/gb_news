@@ -12,7 +12,7 @@
                     <div class="card-body">
                         @if ($item)
                             <h1>{{ $item->title }}</h1>
-                            @if ($item->is_private)
+                            @if ($item->is_private && !Auth::user())
                                 <p>Для просмотра новости требуется авторизация</p>
                             @else
                                 <div class="card-img"

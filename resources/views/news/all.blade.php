@@ -12,9 +12,14 @@
                     <div class="card-body">
                         <h1>Новости</h1>
                         @forelse($news as $item)
-                            <a href="{{ route('news.one', $item->slug) }}"> {{ $item->title }}
+                            <a href="{{ route('news.one', $item->slug) }}"> {{ $item->title }}</a>
+                            @if ($item->is_private && !Auth::user())
+                                <div>Для просмотра новости требуется авторизация</div>
+                            @else
                                 <div class="card-img"
-                                     style="background-image: url({{ $item->image ?? asset('storage/images/default.jpeg') }})"></div></a><br>
+                                     style="background-image: url({{ $item->image ?? asset('storage/images/default.jpeg') }})"></div>
+                            @endif
+                            <br>
                         @empty
                             <p>Нет новостей</p>
                         @endforelse

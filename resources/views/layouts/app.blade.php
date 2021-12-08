@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Главная') }}</title>
+    <title>@yield('title', config('app.name', 'Главная'))</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -58,6 +58,14 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @if (Auth::user()->is_admin)
+                                        <a class="dropdown-item" href="{{ route('admin.index') }}"> {{ __('Admin panel') }}</a>
+                                    @endif
+
+                                    <a class="dropdown-item" href="{{ route('updateProfile') }}">
+                                        {{ __('Profile') }}
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

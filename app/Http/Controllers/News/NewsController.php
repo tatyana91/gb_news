@@ -10,7 +10,6 @@ class NewsController extends Controller
 {
     public function all(){
         $news = News::query()
-            ->where('is_private', '=', false)
             ->paginate(config('app.count_per_page'));
         return view('news.all')->with('news', $news);
     }

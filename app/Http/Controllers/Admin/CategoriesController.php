@@ -24,11 +24,10 @@ class CategoriesController extends Controller
     }
 
     public function store(CategoryRequest $request, Category $category) {
-        $request->validated();
-
         $result = $this->saveCategory($request, $category);
-
-        return redirect()->route('news.category', $result['slug'])->with('success', 'Категория добавлена');
+        return redirect()
+            ->route('news.category', $result['slug'])
+            ->with('success', 'Категория добавлена');
     }
 
     public function edit(Category $category) {
@@ -38,17 +37,17 @@ class CategoriesController extends Controller
     }
 
     public function update(CategoryRequest $request, Category $category) {
-        $request->validated();
-
         $result = $this->saveCategory($request, $category);
-
-        return redirect()->route('news.category', $result['slug'])->with('success', 'Категория изменена');
+        return redirect()
+            ->route('news.category', $result['slug'])
+            ->with('success', 'Категория изменена');
     }
 
     public function destroy(Category $category) {
-        News::query()->where('category_id', '=', $category->id)->delete();
         $category->delete();
-        return redirect()->route('admin.categories.index')->with('success', 'Категория удалена');
+        return redirect()
+            ->route('admin.categories.index')
+            ->with('success', 'Категория удалена');
     }
 
     protected function saveCategory(Request $request, Category $category): array

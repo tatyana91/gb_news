@@ -78,3 +78,5 @@ $kernel->terminate($request, $response);
 //php artisan dusk:install
 //php artisan dusk
 //php artisan dusk:make AddNewsTest
+//php artisan make:middleware CheckIsAdmin
+//php artisan make:controller Admin\ProfileController

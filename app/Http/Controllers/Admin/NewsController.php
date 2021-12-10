@@ -26,10 +26,7 @@ class NewsController extends Controller
     }
 
     public function store(NewsRequest $request, News $news) {
-        $request->validated();
-
         $result = $this->saveNews($request, $news);
-
         return redirect()->route('news.one', $result['slug'])->with('success', 'Новость добавлена');
     }
 
@@ -41,10 +38,7 @@ class NewsController extends Controller
     }
 
     public function update(NewsRequest $request, News $news) {
-        $request->validated();
-
         $result = $this->saveNews($request, $news);
-
         return redirect()->route('news.one', $result['slug'])->with('success', 'Новость изменена');
     }
 

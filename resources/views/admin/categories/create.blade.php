@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', __('Categories'))
+
 @section('menu')
     @include('admin.menu')
 @endsection
@@ -18,15 +20,16 @@
                             <div class="form-group row">
                                 <label for="title" class="col-md-12 col-form-label">Название категории</label>
                                 <div class="col-md-12">
-                                    @if ($errors->has('title'))
-                                        <div class="alert alert-danger" role="alert">
-                                            @foreach($errors->get('title') as $error)
-                                                {{ $error }}<br>
-                                            @endforeach
-                                        </div>
-                                    @endif
-                                    <input id="title" type="text" class="form-control" name="title"
-                                           value="{{ old('title') ?? $category->title }}" autocomplete="title" autofocus>
+                                    <input id="title" type="text"
+                                           class="form-control @error('title') is-invalid @enderror"
+                                           name="title"
+                                           value="{{ old('title') ?? $category->title }}"
+                                           autocomplete="title" autofocus>
+                                    @error('title')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', __('News'))
+
 @section('menu')
     @include('admin.menu')
 @endsection
@@ -18,15 +20,15 @@
                             <div class="form-group row">
                                 <label for="title" class="col-md-12 col-form-label">Название</label>
                                 <div class="col-md-12">
-                                    @if ($errors->has('title'))
-                                        <div class="alert alert-danger" role="alert">
-                                            @foreach($errors->get('title') as $error)
-                                                {{ $error }}<br>
-                                            @endforeach
-                                        </div>
-                                    @endif
-                                    <input id="title" type="text" class="form-control" name="title"
-                                           value="{{ old('title') ?? $news->title }}" autocomplete="title" autofocus>
+                                    <input id="title" type="text"
+                                           class="form-control @error('title') is-invalid @enderror" name="title"
+                                           value="{{ old('title') ?? $news->title }}"
+                                           autocomplete="title" autofocus>
+                                    @error('title')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -46,7 +48,14 @@
                                 <label for="text" class="col-md-12 col-form-label">Текст новости</label>
 
                                 <div class="col-md-12">
-                                    <textarea id="text" name="text" class="form-control">{{ old('text')   ?? $news->text}}</textarea>
+                                    <textarea id="text" name="text"
+                                              class="form-control @error('text') is-invalid @enderror"
+                                    >{{ old('text')   ?? $news->text}}</textarea>
+                                    @error('text')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -56,6 +65,11 @@
                                            @if ($news->is_private == 1 || old('is_private')) checked @endif
                                            value="1">
                                     <label for="is_private" class="col-form-label">приватная</label>
+                                    @error('is_private')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
 

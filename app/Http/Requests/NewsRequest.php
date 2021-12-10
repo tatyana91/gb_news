@@ -27,7 +27,8 @@ class NewsRequest extends FormRequest
             'title' => 'required|min:5|max:20',
             'text' => 'required|min:5',
             'category_id' => "required|exists:App\Models\Category,id",
-            'image' => 'mimes:jpeg,bmp,png|max:1000'
+            'image' => 'mimes:jpeg,bmp,png|max:1000',
+            'is_private' => 'sometimes|in:1'
         ];
     }
 
@@ -37,7 +38,8 @@ class NewsRequest extends FormRequest
             'title' => 'Заголовок новости',
             'text' => 'Текст новости',
             'category_id' => 'Категория новости',
-            'image' => 'Изображение'
+            'image' => 'Изображение',
+            'is_private' => 'Приватная'
         ];
     }
 

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', __('News'))
+
 @section('menu')
     @include('admin.menu')
 @endsection
@@ -10,7 +12,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <h1>Новости</h1>
+                        <h1>{{ __('News') }}</h1>
                         <p>
                             <a href="{{ route('admin.news.create') }}">
                                 <button type="button" class="btn btn-primary">Добавить новость</button>

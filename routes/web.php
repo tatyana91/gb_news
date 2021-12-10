@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ParserController as AdminParserController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\IndexController as AdminIndexController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
@@ -45,6 +46,8 @@ Route::name('admin.')
         Route::resource('/news', AdminNewsController::class);
         Route::resource('/categories', AdminCategoriesController::class);
 
+        Route::get('/parser', [AdminParserController::class, 'index'])->name('parser.index');
+
         Route::name('users.')
             ->prefix('users')
             ->group(function () {
@@ -58,3 +61,11 @@ Route::match(['get', 'post'], '/profile', [ProfileController::class, 'update'])
     ->middleware('auth');
 
 Auth::routes();
+
+Route::name('auth.')
+    ->prefix('auth')
+    ->group(function () {
+        Route::get('/{socName}', [LoginController::class, 'loginSoc'])->name('loginSoc');
+        Route::get('/{socName}/response', [LoginController::class, 'responseSoc'])->name('responseSoc');
+    });
+

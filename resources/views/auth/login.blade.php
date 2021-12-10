@@ -58,6 +58,9 @@
                                         {{ __('Remember Me') }}
                                     </label>
                                 </div>
+
+                                <a href="{{ route('auth.loginSoc', 'vkontakte') }}"><img src="/storage/icons/vk.png" alt="" width="40"></a>
+                                <a href="{{ route('auth.loginSoc', 'github') }}"><img src="/storage/icons/github.png" alt="" width="40"></a>
                             </div>
                         </div>
 

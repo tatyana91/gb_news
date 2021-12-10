@@ -6,13 +6,16 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "ext-json": "*",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.65",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
-      "ext-json": "*"
+        "orchestra/parser": "^6.1",
+        "socialiteproviders/github": "^4.1",
+        "socialiteproviders/vkontakte": "^4.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

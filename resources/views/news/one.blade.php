@@ -15,8 +15,8 @@
                             @if ($item->is_private && !Auth::user())
                                 <p>Для просмотра новости требуется авторизация</p>
                             @else
-                                <div class="card-img"
-                                     style="background-image: url({{ $item->image ?? asset('storage/images/default.jpeg') }})"></div>
+                                <img class="card-img" alt="{{ $item->title }}"
+                                     src="{{ $item->image ?? asset('storage/images/default.jpeg') }}">
                                 <p>{{ $item->text }}</p>
                             @endif
                         @else

@@ -80,3 +80,8 @@ $kernel->terminate($request, $response);
 //php artisan dusk:make AddNewsTest
 //php artisan make:middleware CheckIsAdmin
 //php artisan make:controller Admin\ProfileController
+//php artisan make:controller Admin\ParserController
+//composer require socialiteproviders/vkontakte
+//composer require socialiteproviders/github
+//https://socialiteproviders.com/
+

@@ -20,7 +20,11 @@
                         </p>
                         @forelse($news as $item)
                             <p>
-                                <div> {{ $item->title }}</div>
+                                <div>
+                                    <p>{{ $item->title }}</p>
+                                    <p><img class="card-img" alt="{{ $item->title }}"
+                                            src="{{ $item->image ?? asset('storage/images/default.jpeg') }}"></p>
+                                </div>
                                 <div style="display: flex">
                                     <a class="btn btn btn-secondary" style="margin-right: 10px" href="{{ route('admin.news.edit', $item) }}">Редактировать</a>
                                     <form action="{{ route('admin.news.destroy', $item) }}" method="post">
